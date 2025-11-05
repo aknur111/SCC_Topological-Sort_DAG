@@ -9,10 +9,25 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+
+/**
+ * Single-source shortest and longest path algorithms for DAGs.
+ * <p>
+ * The implementation assumes non-negative edge weights and uses dynamic
+ * programming over a topological order. Longest paths (critical paths)
+ * are computed with a similar DP that maximizes distances.
+ */
 public class DagShortestPaths {
 
+    /**
+     * Result of shortest/longest path computation on a DAG.
+     * Stores distances and parent pointers for path reconstruction.
+     */
     public static class Result {
+        /** dist[v] is the distance from the source to v. */
         public final long[] dist;
+
+        /** parent[v] is the previous vertex on some optimal path to v. */
         public final int[] parent;
 
         public Result(long[] dist, int[] parent) {

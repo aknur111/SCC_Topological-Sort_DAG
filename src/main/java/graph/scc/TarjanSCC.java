@@ -9,10 +9,26 @@ import java.util.Arrays;
 import java.util.Deque;
 import java.util.List;
 
+
+/**
+ * Implementation of Tarjan's algorithm for finding strongly connected
+ * components (SCCs) in a directed graph.
+ * <p>
+ * The algorithm runs in O(V + E) time. It reports components as a list
+ * of vertex lists and also stores component ids for each vertex.
+ */
 public class TarjanSCC {
 
+
+    /**
+     * Result of Tarjan's algorithm: list of SCCs and an array of component ids.
+     */
     public static class Result {
+
+        /** components[k] is the list of vertices in k-th SCC. */
         public final List<List<Integer>> components;
+
+        /** compId[v] is the index of the SCC containing vertex v. */
         public final int[] compId;
 
         public Result(List<List<Integer>> components, int[] compId) {
@@ -31,11 +47,24 @@ public class TarjanSCC {
     private Deque<Integer> stack;
     private List<List<Integer>> components;
 
+
+    /**
+     * Creates a new Tarjan SCC solver.
+     *
+     * @param g       directed graph on which SCCs will be computed
+     * @param metrics metrics object used to count DFS operations and time
+     */
     public TarjanSCC(Graph g, Metrics metrics) {
         this.g = g;
         this.metrics = metrics;
     }
 
+
+    /**
+     * Runs Tarjan's algorithm on the given graph.
+     *
+     * @return SCC result containing all components and component ids
+     */
     public Result run() {
         int n = g.n();
         index = 0;

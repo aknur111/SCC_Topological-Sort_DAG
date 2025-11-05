@@ -8,8 +8,24 @@ import java.util.ArrayList;
 import java.util.Deque;
 import java.util.List;
 
+
+/**
+ * Topological sorting algorithms for DAGs.
+ * <p>
+ * In this assignment we use Kahn's algorithm with a queue to compute
+ * a valid topological ordering of the condensation graph.
+ */
 public class TopologicalSort {
 
+
+    /**
+     * Computes a topological order of the given DAG using Kahn's algorithm.
+     *
+     * @param dag     directed acyclic graph
+     * @param metrics metrics object used to count pushes/pops and time
+     * @return list of vertices in topological order
+     * @throws IllegalArgumentException if the graph contains a cycle
+     */
     public static List<Integer> kahn(Graph dag, Metrics metrics) {
         int n = dag.n();
         int[] indeg = new int[n];

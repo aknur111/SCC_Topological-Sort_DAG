@@ -12,7 +12,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="KZ"/>
     <property name="sun.boot.library.path" value="/opt/homebrew/Cellar/openjdk/25.0.1/libexec/openjdk.jdk/Contents/Home/lib"/>
-    <property name="sun.java.command" value="/Users/salemkanaknur/IdeaProjects/ADS_Assignment4/target/surefire/surefirebooter-20251105134343470_3.jar /Users/salemkanaknur/IdeaProjects/ADS_Assignment4/target/surefire 2025-11-05T13-43-42_203-jvmRun1 surefire-20251105134343470_1tmp surefire_0-20251105134343470_2tmp"/>
+    <property name="sun.java.command" value="/Users/salemkanaknur/IdeaProjects/ADS_Assignment4/target/surefire/surefirebooter-20251105151211037_3.jar /Users/salemkanaknur/IdeaProjects/ADS_Assignment4/target/surefire 2025-11-05T15-12-10_992-jvmRun1 surefire-20251105151211037_1tmp surefire_0-20251105151211037_2tmp"/>
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/Users/salemkanaknur/IdeaProjects/ADS_Assignment4/target/test-classes:/Users/salemkanaknur/IdeaProjects/ADS_Assignment4/target/classes:/Users/salemkanaknur/.m2/repository/com/google/code/gson/gson/2.10.1/gson-2.10.1.jar:/Users/salemkanaknur/.m2/repository/org/junit/jupiter/junit-jupiter/5.10.0/junit-jupiter-5.10.0.jar:/Users/salemkanaknur/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.10.0/junit-jupiter-api-5.10.0.jar:/Users/salemkanaknur/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/Users/salemkanaknur/.m2/repository/org/junit/platform/junit-platform-commons/1.10.0/junit-platform-commons-1.10.0.jar:/Users/salemkanaknur/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/salemkanaknur/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.10.0/junit-jupiter-params-5.10.0.jar:/Users/salemkanaknur/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.10.0/junit-jupiter-engine-5.10.0.jar:/Users/salemkanaknur/.m2/repository/org/junit/platform/junit-platform-engine/1.10.0/junit-platform-engine-1.10.0.jar:"/>
@@ -29,7 +29,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="apple.awt.application.name" value="ForkedBooter"/>
-    <property name="surefire.real.class.path" value="/Users/salemkanaknur/IdeaProjects/ADS_Assignment4/target/surefire/surefirebooter-20251105134343470_3.jar"/>
+    <property name="surefire.real.class.path" value="/Users/salemkanaknur/IdeaProjects/ADS_Assignment4/target/surefire/surefirebooter-20251105151211037_3.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.runtime.version" value="25.0.1"/>
@@ -59,7 +59,7 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="69.0"/>
   </properties>
-  <testcase name="testMultipleSCCsWithCondensation" classname="graph.scc.TarjanSCCAndTopoTest" time="0.001"/>
+  <testcase name="testMultipleSCCsWithCondensation" classname="graph.scc.TarjanSCCAndTopoTest" time="0.002"/>
   <testcase name="testSingleCycleOneSCC" classname="graph.scc.TarjanSCCAndTopoTest" time="0.001"/>
   <testcase name="testPureDAGManySCCs" classname="graph.scc.TarjanSCCAndTopoTest" time="0.001"/>
 </testsuite>

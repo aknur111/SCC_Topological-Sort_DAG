@@ -12,6 +12,20 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 
+
+/**
+ * Entry point of the assignment application.
+ * <p>
+ * The program:
+ * <ol>
+ *   <li>Loads a directed graph from a JSON file (Gson).</li>
+ *   <li>Computes SCCs using Tarjan's algorithm and builds the condensation DAG.</li>
+ *   <li>Computes a topological order of the condensation graph.</li>
+ *   <li>Runs DAG shortest paths and longest (critical) path algorithms
+ *       on the condensation graph.</li>
+ *   <li>Prints metrics and timing for each step.</li>
+ * </ol>
+ */
 public class Main {
 
     static class JsonEdge {
@@ -28,6 +42,12 @@ public class Main {
         String weight_model;
     }
 
+    /**
+     * Loads a graph from the given JSON file path using Gson.
+     *
+     * @param path path to a JSON file in the /data directory
+     * @return loaded Graph instance
+     */
     public static Graph loadGraph(String path, int[] sourceOut) throws IOException {
         String json = Files.readString(Path.of(path));
         Gson gson = new Gson();
@@ -50,6 +70,12 @@ public class Main {
         return g;
     }
 
+    /**
+     * Command line entry point.
+     *
+     * @param args args[0] must be the path to a JSON input file
+     *             (e.g. data/tasks.json)
+     */
     public static void main(String[] args) throws Exception {
         if (args.length < 1) {
             System.err.println("Usage: java app.Main <path-to-tasks.json>");
