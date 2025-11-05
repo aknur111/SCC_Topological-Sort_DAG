@@ -96,10 +96,13 @@ public class Main {
             System.out.println("Component " + cid + " (size=" + comp.size() + "): " + comp);
             cid++;
         }
-        System.out.println("Total SCCs = " + sccRes.components.size());
-        System.out.println("Tarjan: dfsVisits=" + sccMetrics.dfsVisits +
-                ", dfsEdges=" + sccMetrics.dfsEdges +
-                ", time=" + sccMetrics.elapsedMillis() + " ms");
+        System.out.printf(
+                "Tarjan: dfsVisits=%d, dfsEdges=%d, time=%.3f ms%n",
+                sccMetrics.dfsVisits,
+                sccMetrics.dfsEdges,
+                sccMetrics.getElapsedMillis()
+        );
+
 
         Metrics condMetrics = new Metrics();
         Graph dag = CondensationGraphBuilder.buildCondensation(
@@ -124,8 +127,14 @@ public class Main {
         for (int c : topoOrder) {
             System.out.println("Component " + c + " -> " + sccRes.components.get(c));
         }
-        System.out.println("Kahn: pushes=" + topoMetrics.topoPushes +
-                ", pops=" + topoMetrics.topoPops);
+        System.out.printf(
+                "Kahn: pushes=%d, pops=%d, time=%.3f ms%n",
+                topoMetrics.topoPushes,
+                topoMetrics.topoPops,
+                topoMetrics.getElapsedMillis()
+        );
+
+
 
         Metrics spMetrics = new Metrics();
         int sourceComp = sccRes.compId[source];
@@ -141,8 +150,12 @@ public class Main {
             String val = (d >= INF) ? "INF" : Long.toString(d);
             System.out.println("dist[" + v + "] = " + val);
         }
-        System.out.println("Relaxations (shortest) = " + spMetrics.relaxations +
-                ", time=" + spMetrics.elapsedMillis() + " ms");
+        System.out.printf(
+                "Relaxations (shortest) = %d, time=%.3f ms%n",
+                spMetrics.relaxations,
+                spMetrics.getElapsedMillis()
+        );
+
 
         for (int v = 0; v < dag.n(); v++) {
             if (shortest.dist[v] < INF) {
@@ -161,7 +174,12 @@ public class Main {
                 DagShortestPaths.reconstructPath(criticalTarget, longest);
         System.out.println("Critical path (components): " + criticalPath);
         System.out.println("Critical path length = " + longest.dist[criticalTarget]);
-        System.out.println("Relaxations (longest) = " + longMetrics.relaxations +
-                ", time=" + longMetrics.elapsedMillis() + " ms");
+        System.out.printf(
+                "Relaxations (longest) = %d, time=%.3f ms%n",
+                longMetrics.relaxations,
+                longMetrics.getElapsedMillis()
+        );
+
+
     }
 }

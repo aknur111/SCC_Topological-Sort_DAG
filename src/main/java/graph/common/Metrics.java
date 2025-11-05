@@ -1,61 +1,60 @@
 package graph.common;
 
-
 /**
- * Simple metrics collector used to instrument algorithms.
- * <p>
- * It stores operation counters and elapsed time in milliseconds.
- * SCC, topological sort and DAG shortest paths all share this class.
+ * Instrumentation helper for algorithms.
+ * Counts operations (DFS visits, relaxations, etc.)
+ * and measures elapsed time in milliseconds with double precision.
  */
 public class Metrics {
 
-
-    /** Number of DFS vertex visits (for SCC). */
     public long dfsVisits;
-
-    /** Number of DFS edges processed (for SCC). */
     public long dfsEdges;
 
-    /** Number of pushes to the queue (for Kahn topological sort). */
     public long topoPushes;
-
-    /** Number of pops from the queue (for Kahn topological sort). */
     public long topoPops;
 
-    /** Number of relaxations in DAG shortest/longest paths. */
     public long relaxations;
 
-    public long startTimeNs;
-    public long endTimeNs;
+    private long startTimeNs;
+    private double elapsedMillis;
 
     /**
-     * Starts the internal timer using System.nanoTime().
+     * Starts the timer for this metrics instance.
+     * Uses System.nanoTime() under the hood.
      */
     public void startTimer() {
         startTimeNs = System.nanoTime();
     }
 
     /**
-     * Stops the timer and stores elapsed time in milliseconds.
+     * Stops the timer and stores elapsed time in milliseconds as double.
      */
     public void stopTimer() {
-        endTimeNs = System.nanoTime();
+        if (startTimeNs != 0L) {
+            long end = System.nanoTime();
+            long diffNs = end - startTimeNs;
+            this.elapsedMillis = diffNs / 1_000_000.0;
+            startTimeNs = 0L;
+        }
     }
 
     /**
-     * Returns elapsed time in milliseconds between startTimer() and stopTimer().
-     *
-     * @return elapsed time in milliseconds
+     * Returns the last measured elapsed time in milliseconds.
      */
-    public long elapsedMillis() {
-        return (endTimeNs - startTimeNs) / 1_000_000;
+    public double getElapsedMillis() {
+        return elapsedMillis;
     }
 
     /**
-     * Resets all counters and timing to zero.
+     * Resets all counters and timing.
      */
     public void reset() {
-        dfsVisits = dfsEdges = topoPushes = topoPops = relaxations = 0L;
-        startTimeNs = endTimeNs = 0L;
+        dfsVisits = 0;
+        dfsEdges = 0;
+        topoPushes = 0;
+        topoPops = 0;
+        relaxations = 0;
+        startTimeNs = 0L;
+        elapsedMillis = 0.0;
     }
 }
